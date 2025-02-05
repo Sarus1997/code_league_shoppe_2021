@@ -13,26 +13,26 @@ def calculate_bill(talk_time, sms_count, data_gb):
     DATA_CAP = 188.00
     TAX_RATE = 0.07
 
-    # Calculate additional usage
+    # คำนวณการใช้งานเพิ่มเติม
     extra_talk_time = max(0, talk_time - INCLUDED_TALK_TIME)
     extra_sms = max(0, sms_count - INCLUDED_SMS)
     extra_data = max(0, data_gb - INCLUDED_DATA)
 
-    # Calculate additional charges
+    # คำนวณค่าใช้จ่ายเพิ่มเติม
     talk_time_charge = extra_talk_time * TALK_TIME_RATE
     sms_charge = extra_sms * SMS_RATE
     data_charge = min(extra_data * DATA_RATE, DATA_CAP)
 
-    # Calculate subtotal
+    # คำนวณยอดรวมย่อย
     sub_total = BASE_CHARGE + talk_time_charge + sms_charge + data_charge
 
-    # Calculate tax
+    # คำนวณภาษี
     tax = sub_total * TAX_RATE
 
-    # Calculate total
+    # คำนวณยอดรวม
     total = sub_total + tax
 
-    # Print the bill
+    # พิมพ์ใบเสร็จ
     print("")
     print(" " * 15 + "BILL")
     print("==================================")
